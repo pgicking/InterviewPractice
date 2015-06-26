@@ -11,7 +11,8 @@ public class Main {
 	// write your code here
         //runCommon();
         //fizzbuzz();
-        runPalinDrome();
+        //runPalinDrome();
+        runRemoveChar();
     }
 
     /**************************************************************************************/
@@ -101,5 +102,27 @@ public class Main {
         else
             System.out.println(a + " is not a palindrome");
     }
+    /**************************************************************************************/
+
+
+    /**************************************************************************************/
+    //Write a method that will remove a given character from a string
+
+    public static void runRemoveChar(){
+        String a = "blop";
+        removeChar(a,"l");
+    }
+
+    public static void removeChar(String a, String CHAR){
+        System.out.println("Before: " + a);
+        String[] temp = a.split("");
+        for(int i = 0; i < temp.length; ++i){
+            if(temp[i].equals(CHAR)){
+                a = a.replace(CHAR,"");
+            }
+        }
+        System.out.println("After: " + a);
+    }
+    /**************************************************************************************/
 
 }
