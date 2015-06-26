@@ -1,9 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
 
@@ -12,7 +9,8 @@ public class Main {
         //runCommon();
         //fizzbuzz();
         //runPalinDrome();
-        runRemoveChar();
+        //runRemoveChar();
+        runPermute();
     }
 
     /**************************************************************************************/
@@ -124,5 +122,59 @@ public class Main {
         System.out.println("After: " + a);
     }
     /**************************************************************************************/
+
+
+    /**************************************************************************************/
+    //3) Print all permutation of String both iterative and Recursive way? (solution)
+
+    public static void runPermute(){
+        String a = "aabbcc";
+        System.out.println("Expected permutations: " + calcPermutations(a));
+
+    }
+
+    public static void PermutateStringIterative(String a){
+        String[] temp = a.split("");
+
+
+    }
+
+    //sub problem, find number of duplicate characters in a string
+    public static int calcPermutations(String a){
+        String[] temp = a.split("");
+        Map<String, Integer> dict = new HashMap<String, Integer>();
+
+
+        for(String elm : temp){
+            Integer count = dict.get(elm);
+                if (count == null) {
+                    dict.put(elm, 1);
+                }
+                else {
+                    dict.put(elm, count + 1);
+                }
+        }
+
+        Object[] dupes = dict.values().toArray();
+
+        int top = Factorial(a.length());
+        int bottom = 1;
+        for(int i = 0; i < dupes.length; ++i) {
+            bottom = bottom * Factorial((Integer) dupes[i]);
+        }
+
+        return top / bottom;
+    }
+
+    public static int Factorial(int n){
+        int result = 1;
+        for(int i = 1; i <= n; ++i){
+            result = result * i;
+        }
+        return result;
+    }
+
+    /**************************************************************************************/
+
 
 }
